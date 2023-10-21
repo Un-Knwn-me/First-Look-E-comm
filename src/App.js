@@ -3,7 +3,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import ProductForm from './components.js/ProductForm';
 import ProductList from './components.js/ProductList';
-import axios from 'axios';
+// import axios from 'axios';
 import AddProduct from './components.js/AddProduct';
 
 // export const URL = 'http://localhost:8080'

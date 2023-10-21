@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Base from './Base';
-import { Box, Button, Grid, Paper, Typography } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 const AddProduct = () => {
-  const [loading, setLoading] = useState(false);
-
-  const handleRefreshClick = () => {
-    // Set loading to true to start the rotation animation
-    setLoading(true);
-
-    // Simulate loading for a few seconds (you can replace this with actual data loading)
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000); // Change 2000 to the desired loading time in milliseconds
-  };
 
   return (
     <Base title="Add Products" description="Add your product and necessary information">

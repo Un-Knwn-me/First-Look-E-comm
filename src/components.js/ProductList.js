@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import URL from '../App.js';
+// import URL from '../App.js';
 import axios from 'axios';
 
 const ProductList = () => {
