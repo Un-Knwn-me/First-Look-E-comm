@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Base from './Base';
 import { Button, Grid } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import DeleteIcon from '@mui/icons-material/Delete';
+import CloseIcon from '@mui/icons-material/Close';
 
 const AddProduct = () => {
   const [files, setFiles] = useState([]);
@@ -296,12 +296,12 @@ const handleDrop = (e) => {
 
 <div className="mt-12 mb-4 col-span-8 grid grid-cols-12 gap-4">
   <div className="col-span-6">
-    <Button variant="outlined" size="small" className="w-full">
+    <Button variant="outlined" size="small" sx={{ color:"#006096", borderColor: "#006096" }} className="w-full">
       Cancel
     </Button>
   </div>
   <div className="col-span-6" style={{ alignItems: "center" }}>
-    <Button variant="contained" size="small" className="w-full">
+    <Button variant="contained" size="small" sx={{ bgcolor:"#006096" }} className="w-full">
       PUBLISH PRODUCT
     </Button>
   </div>
@@ -350,7 +350,7 @@ const handleDrop = (e) => {
                 className="absolute top-0 right-0 p-1 cursor-pointer"
                 onClick={() => handleRemove(index)}
               >
-                <DeleteIcon />
+                <CloseIcon sx={{ backgroundColor: "#F0F0F0" }} />
               </div>
             </div>
           ))}
