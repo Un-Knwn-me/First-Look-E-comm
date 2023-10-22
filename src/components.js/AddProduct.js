@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Base from './Base';
 import { Button, Grid } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const AddProduct = () => {
+  const [files, setFiles] = useState([]);
+  const [dragging, setDragging] = useState(false);
+
+const handleDragEnter = (e) => {
+  e.preventDefault();
+  setDragging(true);
+};
+
+const handleDragLeave = () => {
+  setDragging(false);
+};
+
+const handleDrop = (e) => {
+  e.preventDefault();
+  setDragging(false);
+  const droppedFiles = e.dataTransfer.files;
+  setFiles([...files, ...droppedFiles]);
+};
+
+  const handleFileChange = (e) => {
+    const selectedFiles = e.target.files;
+    setFiles([...files, ...selectedFiles]);
+  };
+
+  const handleRemove = (index) => {
+    const updatedFiles = [...files];
+    updatedFiles.splice(index, 1);
+    setFiles(updatedFiles);
+  };
 
   return (
     <Base title="Add Products" description="Add your product and necessary information">
@@ -283,26 +313,50 @@ const AddProduct = () => {
             <Grid item xs={12} sm={12} md={7} sx={{ mt: 2 }}>
 
             <div className="col-span-full">
-              <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
-                Add images
-              </label>
-              <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                <div className="text-center">
-                  <CloudUploadIcon className="mx-auto text-gray-300" aria-hidden="true" sx={{ height: "40px", width: "40px" }} />
-                  <div className="mt-1 flex text-sm leading-6 text-gray-600">
-                    <label
-                      htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                    >
-                      <span>Upload files</span>
-                      <input id="file-upload" name="file-upload" type="file" className="sr-only" />
-                    </label>
-                    <p className="pl-1">or drag and drop</p>
-                  </div>
-                  <p className="text-xs leading-5 text-gray-600">PNG, JPG up to 10MB</p>
-                </div>
+      <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
+        Add images
+      </label>
+      <div className={`mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 ${dragging ? 'bg-indigo-100' : ''}`}
+  onDragEnter={handleDragEnter}
+  onDragOver={(e) => e.preventDefault()}
+  onDragLeave={handleDragLeave}
+  onDrop={handleDrop}>
+        <div className="text-center">
+          <CloudUploadIcon className="mx-auto text-gray-300" aria-hidden="true" sx={{ height: "40px", width: "40px" }} />
+          <div className="mt-1 flex text-sm leading-6 text-gray-600">
+            <label
+              htmlFor="file-upload"
+              className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+            >
+              <span>Upload files</span>
+              <input id="file-upload" name="file-upload" type="file" className="sr-only" multiple onChange={handleFileChange} />
+            </label>
+            <p className="pl-1">or drag and drop</p>
+          </div>
+          <p className="text-xs leading-5 text-gray-600">PNG, JPG up to 10MB</p>
+        </div>
+      </div>
+
+      {files.length > 0 && (
+        <div className="mt-4 grid grid-cols-6 gap-4">
+          {files.map((file, index) => (
+            <div key={index} className="relative">
+              <img
+                src={URL.createObjectURL(file)}
+                alt={`Product ${index}`}
+                className="h-20 w-full object-cover rounded-md"
+              />
+              <div
+                className="absolute top-0 right-0 p-1 cursor-pointer"
+                onClick={() => handleRemove(index)}
+              >
+                <DeleteIcon />
               </div>
             </div>
+          ))}
+        </div>
+      )}
+    </div>
 
             <div className="col-span-full mt-5">
               <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
