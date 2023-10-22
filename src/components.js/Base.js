@@ -315,7 +315,7 @@ const formattedDateTime = currentDateTime.toLocaleString(undefined, options);
     {formattedDateTime}
   </Typography>
 </Box>
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          <Container maxWidth="lg" sx={{ my: 4 }}>
          
               <div>
         <main>

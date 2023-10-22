@@ -333,7 +333,7 @@ const handleDrop = (e) => {
             </label>
             <p className="pl-1">or drag and drop</p>
           </div>
-          <p className="text-xs leading-5 text-gray-600">PNG, JPG up to 10MB</p>
+          <p className="text-xs leading-5 text-gray-600">PNG, JPG up to 6 files</p>
         </div>
       </div>
 
