@@ -56,7 +56,7 @@ const handleDrop = (e) => {
                     name="name"
                     id="name"
                     autoComplete="name"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    className="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="Product name"
                   />
                 </div>
@@ -75,7 +75,7 @@ const handleDrop = (e) => {
           name="brandName"
           id="brandName"
           autoComplete="brandName"
-          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
           placeholder="Brand name"
         />
       </div>
@@ -92,7 +92,7 @@ const handleDrop = (e) => {
           name="sku"
           id="sku"
           autoComplete="sku"
-          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
           placeholder="#SKU"
         />
       </div>
@@ -110,7 +110,7 @@ const handleDrop = (e) => {
             id="country"
             name="country"
             autoComplete="country-name"
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
         >
             <option>Select</option>
             <option>T-shirts</option>
@@ -130,7 +130,7 @@ const handleDrop = (e) => {
           name="type"
           id="type"
           autoComplete="type"
-          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
           placeholder="Product Type"
         />
       </div>
@@ -148,7 +148,7 @@ const handleDrop = (e) => {
             id="size"
             name="size"
             autoComplete="size"
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
         >
             <option>Select</option>
             <option>XS</option>
@@ -168,7 +168,7 @@ const handleDrop = (e) => {
             id="color"
             name="color"
             autoComplete="color"
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
         >
             <option>Select</option>
             <option>Black</option>
@@ -193,7 +193,7 @@ const handleDrop = (e) => {
           name="price"
           id="price"
           autoComplete="price"
-          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
           placeholder="Price"
         />
       </div>
@@ -210,7 +210,7 @@ const handleDrop = (e) => {
           name="salesPrice"
           id="salesPrice"
           autoComplete="salesPrice"
-          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
           placeholder="Sales Price"
         />
       </div>
@@ -228,7 +228,7 @@ const handleDrop = (e) => {
             id="tag"
             name="tag"
             autoComplete="tag"
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
         >
             <option>Select tag</option>
             <option>Best Selling</option>
@@ -248,7 +248,7 @@ const handleDrop = (e) => {
           name="stock"
           id="stock"
           autoComplete="stock"
-          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
           placeholder="Stock Count"
         />
         <span className="flex select-none items-center pr-3 text-gray-500 sm:text-sm">/Pcs</span>
@@ -269,7 +269,7 @@ const handleDrop = (e) => {
           name="fabric"
           id="fabric"
           autoComplete="fabric"
-          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
           placeholder="Fabric"
         />
       </div>
@@ -286,7 +286,7 @@ const handleDrop = (e) => {
           name="style"
           id="style"
           autoComplete="style"
-          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+          className="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
           placeholder="Style"
         />
       </div>
@@ -316,17 +316,17 @@ const handleDrop = (e) => {
       <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
         Add images
       </label>
-      <div className={`mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 ${dragging ? 'bg-indigo-100' : ''}`}
+      <div className={`mt-2 flex justify-center rounded-lg border border-dashed bg-blue-100 border-blue-900/30 px-6 py-10 ${dragging ? 'bg-indigo-100' : ''}`}
   onDragEnter={handleDragEnter}
   onDragOver={(e) => e.preventDefault()}
   onDragLeave={handleDragLeave}
   onDrop={handleDrop}>
         <div className="text-center">
-          <CloudUploadIcon className="mx-auto text-gray-300" aria-hidden="true" sx={{ height: "40px", width: "40px" }} />
+          <CloudUploadIcon className="mx-auto text-blue-400" aria-hidden="true" sx={{ height: "40px", width: "40px" }} />
           <div className="mt-1 flex text-sm leading-6 text-gray-600">
             <label
               htmlFor="file-upload"
-              className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+              className="relative cursor-pointer rounded-md font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
             >
               <span>Upload files</span>
               <input id="file-upload" name="file-upload" type="file" className="sr-only" multiple onChange={handleFileChange} />
@@ -367,7 +367,7 @@ const handleDrop = (e) => {
                   id="description"
                   name="description"
                   rows={3}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   placeholder='Type here..'
                 />
               </div>
@@ -382,7 +382,7 @@ const handleDrop = (e) => {
                   id="note"
                   name="note"
                   rows={2}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   placeholder='Type here..'
                 />
               </div>
