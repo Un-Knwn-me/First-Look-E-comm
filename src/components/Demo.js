@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 // import URL from '../App.js';
 import axios from 'axios';
 
-const ProductForm = () => {
+const Demo = () => {
   const [productName, setProductName] = useState('');
   const [images, setImages] = useState([]);
   const [message, setMessage] = useState('');
-
+  
   const handleProductSubmit = async (e) => {
     e.preventDefault();
 
@@ -60,8 +60,9 @@ const ProductForm = () => {
         <button type="submit">Add Product</button>
       </form>
       {message && <p>{message}</p>}
+
     </div>
   );
 };
 
-export default ProductForm;
+export default Demo;

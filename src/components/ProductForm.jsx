@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import Base from './Base';
-import { Button, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CloseIcon from '@mui/icons-material/Close';
 
-const AddProduct = () => {
+const ProductForm = () => {
   const [files, setFiles] = useState([]);
   const [dragging, setDragging] = useState(false);
+  const [ productName, setProductName ] = useState();
+  // const [images, setImages] = useState([]);
 
 const handleDragEnter = (e) => {
   e.preventDefault();
@@ -35,15 +36,63 @@ const handleDrop = (e) => {
     setFiles(updatedFiles);
   };
 
-  return (
-    <Base title="Add Products" description="Add your product and necessary information">
 
-        <div className="rounded-2xl bg-white py-5 px-8 shadow-lg backdrop-blur-md max-sm:px-8">
-          <div className="text-black text-start">
-            <p className='text-sm underline underline-offset-14 pb-3 decoration-4 decoration-blue-700'>BASIC INFO</p>
-            <hr/>
-            
-            <Grid container spacing={6}>
+  // const handleProductSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const formData = new FormData();
+  //   formData.append('name', productName);
+  //   for (let i = 0; i < images.length; i++) {
+  //     formData.append('images', images[i]);
+  //   }
+
+  //   try {
+  //     const response = await axios.post(`http://localhost:8080/admin/product/add`, formData, {
+  //       headers: { 'Content-Type': 'multipart/form-data' },
+  //     });
+
+  //     if (response.status === 200) {
+  //       setMessage('Product added successfully');
+  //       setProductName('');
+  //       setImages([]);
+  //     }
+  //   } catch (error) {
+  //     setMessage('Error adding product');
+  //     console.log(error)
+  //   }
+  // };
+
+  // const handleImageChange = (e) => {
+  //   setImages([...e.target.files]);
+  // };
+
+  return (
+    <div>
+      {/* <h2>Add a New Product</h2>
+      <form onSubmit={handleProductSubmit}>
+        <label>
+          Product Name:
+          <input
+            type="text"
+            value={productName}
+            onChange={(e) => setProductName(e.target.value)}
+          />
+        </label>
+        <label>
+          Product Images:
+          <input
+            type="file"
+            multiple
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+        </label>
+        <button type="submit">Add Product</button>
+      </form>
+      {message && <p>{message}</p>} */}
+
+      <div>
+      <Grid container spacing={6}>
                 <Grid item xs={12} sm={12} md={5} sx={{ mt: 2 }}>
                 <div className="col-span-12">
               <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
@@ -58,6 +107,8 @@ const handleDrop = (e) => {
                     autoComplete="name"
                     className="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="Product name"
+                    value={productName}
+                    onChange={(e) => setProductName(e.target.value)}
                   />
                 </div>
               </div>
@@ -294,20 +345,6 @@ const handleDrop = (e) => {
   </div>
 </div>
 
-<div className="mt-12 mb-4 col-span-8 grid grid-cols-12 gap-4">
-  <div className="col-span-6">
-    <Button variant="outlined" size="small" sx={{ color:"#006096", borderColor: "#006096" }} className="w-full">
-      Cancel
-    </Button>
-  </div>
-  <div className="col-span-6" style={{ alignItems: "center" }}>
-    <Button variant="contained" size="small" sx={{ bgcolor:"#006096" }} className="w-full">
-      PUBLISH PRODUCT
-    </Button>
-  </div>
-</div>
-
-
                 </Grid>
 
             <Grid item xs={12} sm={12} md={7} sx={{ mt: 2 }}>
@@ -391,11 +428,9 @@ const handleDrop = (e) => {
             </Grid>
         
             </Grid>
-
-          </div>
-        </div>    
-    </Base>
+      </div>
+    </div>
   );
 };
 
-export default AddProduct;
+export default ProductForm;

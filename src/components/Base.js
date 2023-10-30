@@ -249,11 +249,11 @@ const formattedDateTime = currentDateTime.toLocaleString(undefined, options);
 
             <Divider sx={{ my: 1 }} />
             
-            <ListItemButton onClick={()=>navigate('/sales')}>
+            <ListItemButton onClick={()=>navigate('/product-management')}>
         <ListItemIcon>
           <ShoppingCartIcon />
         </ListItemIcon>
-        <ListItemText primary="Sales" />
+        <ListItemText primary="Prroduct Management" />
       </ListItemButton>
       <ListItemButton onClick={()=>navigate('/contact')}>
         <ListItemIcon>
