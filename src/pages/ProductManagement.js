@@ -28,9 +28,7 @@ const TABLE_HEAD = [
   "SKU",
   "Category",
   "Color",
-  "Size",
   "Price",
-  "Stock",
   "Status",
   "Publish",
   "Action",
@@ -382,9 +380,7 @@ const ProductManagement = () => {
                         salesPrice,
                         price,
                         color,
-                        size,
                         status,
-                        stock,
                       },
                       index
                     ) => {
@@ -467,17 +463,6 @@ const ProductManagement = () => {
                                 color="blue-gray"
                                 className="font-normal"
                               >
-                                {size}
-                              </Typography>
-                            </div>
-                          </td>
-                          <td className={clasLast}>
-                            <div className="flex flex-col">
-                              <Typography
-                                variant="small"
-                                color="blue-gray"
-                                className="font-normal"
-                              >
                                 Rs. {salesPrice}
                               </Typography>
                               <Typography
@@ -489,15 +474,6 @@ const ProductManagement = () => {
                                 Rs. {price}
                               </Typography>
                             </div>
-                          </td>
-                          <td className={clasLast}>
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {stock}
-                            </Typography>
                           </td>
                           <td className={clasLast}>
                             <div className="w-max">

@@ -6,6 +6,8 @@ import Base from "../components/Base";
 import axios from "axios";
 import { Backend_URL } from "../App";
 import { useNavigate } from "react-router-dom";
+import { IconButton, Input, Typography } from "@material-tailwind/react";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const AddProduct = () => {
   const form = useRef();
@@ -20,13 +22,12 @@ const AddProduct = () => {
   const [dragging, setDragging] = useState(false);
   const [category, setCategory] = useState("");
   const [productType, setProductType] = useState("");
-  const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [tag, setTag] = useState("");
-  const [stock, setStock] = useState("");
   const [fabric, setFabric] = useState("");
   const [style, setStyle] = useState("");
   const [notes, setNotes] = useState("");
+  const [varients, setVarients] = useState([{ size: "", stock : 0 }])
 
   const handleDragEnter = (e) => {
     e.preventDefault();
@@ -68,13 +69,15 @@ const AddProduct = () => {
       formData.append("description", description);
       formData.append("category", category);
       formData.append("productType", productType);
-      formData.append("size", size);
       formData.append("color", color);
       formData.append("tag", tag);
-      formData.append("stock", stock);
       formData.append("fabric", fabric);
       formData.append("style", style);
       formData.append("notes", notes);
+
+      formData.append('varients', JSON.stringify(varients));
+      console.log(varients)
+
 
       for (let i = 0; i < images.length; i++) {
         formData.append("images", images[i]);
@@ -99,6 +102,22 @@ const AddProduct = () => {
       //   console.log(error);
     }
   };
+
+  let handleChange = (i, e) => {
+    let newVarients = [...varients];
+    newVarients[i][e.target.name] = e.target.name === 'stock' ? parseInt(e.target.value, 10) : e.target.value;
+    setVarients(newVarients);
+  };  
+
+  let addFormFields = () => {
+    setVarients([...varients, { size: "", stock: 0 }]);
+  };  
+
+let removeFormFields = (i) => {
+  let newFormValues = [...varients];
+  newFormValues.splice(i, 1);
+  setVarients(newFormValues)
+}
 
   return (
     <Base
@@ -241,63 +260,6 @@ const AddProduct = () => {
                   <div className="col-span-8 grid grid-cols-12 gap-4 mt-3">
                     <div className="col-span-6">
                       <label
-                        htmlFor="size"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Size
-                      </label>
-                      <div className="mt-1">
-                        <select
-                          id="size"
-                          name="size"
-                          autoComplete="size"
-                          value={size}
-                          onChange={(e) => setSize(e.target.value)}
-                          className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                        >
-                          <option>Select</option>
-                          <option>S</option>
-                          <option>M</option>
-                          <option>L</option>
-                          <option>XL</option>
-                          <option>2XL</option>
-                          <option>3XL</option>
-                          <option>4XL</option>
-                          <option>5XL</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="col-span-6">
-                      <label
-                        htmlFor="color"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Color
-                      </label>
-                      <div className="mt-1">
-                        <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                          <select
-                            id="color"
-                            name="color"
-                            autoComplete="color"
-                            value={color}
-                            onChange={(e) => setColor(e.target.value)}
-                            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                          >
-                            <option>Select</option>
-                            <option>Black</option>
-                            <option>White</option>
-                            <option>Blue</option>
-                            <option>Red</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-span-8 grid grid-cols-12 gap-4 mt-3">
-                    <div className="col-span-6">
-                      <label
                         htmlFor="price"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
@@ -368,26 +330,27 @@ const AddProduct = () => {
                     </div>
                     <div className="col-span-6">
                       <label
-                        htmlFor="stock"
+                        htmlFor="color"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
-                        Stock Quantity
+                        Color
                       </label>
                       <div className="mt-1">
                         <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                          <input
-                            type="number"
-                            name="stock"
-                            id="stock"
-                            autoComplete="stock"
-                            className="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                            placeholder="Stock Count"
-                            value={stock}
-                            onChange={(e) => setStock(e.target.value)}
-                          />
-                          <span className="flex select-none items-center pr-3 text-gray-500 sm:text-sm">
-                            /Pcs
-                          </span>
+                          <select
+                            id="color"
+                            name="color"
+                            autoComplete="color"
+                            value={color}
+                            onChange={(e) => setColor(e.target.value)}
+                            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                          >
+                            <option>Select</option>
+                            <option>Black</option>
+                            <option>White</option>
+                            <option>Blue</option>
+                            <option>Red</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -439,6 +402,91 @@ const AddProduct = () => {
                       </div>
                     </div>
                   </div>
+
+                {/* Size varients */}
+                <div className="block text-md font-medium leading-6 mt-3 text-cyan-900">
+                        Varients
+                </div>
+                {varients.map((element, index) => (
+                  <div className="col-span-8 grid grid-cols-12 gap-4 mt-1" key={index}>
+                    <div className="col-span-4">
+                      <label
+                        htmlFor="size"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
+                        Size
+                      </label>
+                      <div className="mt-1">
+                        <select
+                          id="size"
+                          name="size"
+                          autoComplete="size"
+                          value={element.size}
+                          onChange={e => handleChange(index, e)}
+                          className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                        >
+                          <option>Select</option>
+                          <option>S</option>
+                          <option>M</option>
+                          <option>L</option>
+                          <option>XL</option>
+                          <option>2XL</option>
+                          <option>3XL</option>
+                          <option>4XL</option>
+                          <option>5XL</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="col-span-5">
+                    <Typography variant="h6" color="blue-gray" className="font-medium text-sm">
+                      Stock Quantity
+                    </Typography>
+                      <div className="relative mt-1">
+                        <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-800 sm:max-w-md">
+                        <Input
+                        type="number"
+                        id="stock"
+                        name="stock"
+                        value={element.stock}
+                        onChange={e => handleChange(index, e)}
+                        autoComplete="stock"
+                        size="xs"
+                        placeholder="Enter quantity"
+                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                        labelProps={{
+                          className: "before:content-none after:content-none",
+                        }}
+                      />
+                      <span className="bg-gray-400 rounded absolute inset-y-1 right-1 flex items-center p-1 text-xs text-black">
+                        /Pcs
+                      </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {
+                index ? 
+                <div className="col-span-2">
+                <IconButton color="red" size="sm" onClick={() => removeFormFields(index)}>
+                  <DeleteForeverIcon />
+                </IconButton>
+                </div>
+                : null
+              }
+                  </div>
+                ))}
+                <div className="mt-2">
+                <Button
+                    type="button"
+                    variant="contained"
+                    size="small"
+                    onClick={() => addFormFields()}
+                    sx={{ bgcolor: "#006096" }}
+                    className="w-fit"
+                  >Add
+                    </Button>
+          </div>
+
                 </Grid>
 
                 <Grid item xs={12} sm={12} md={7} sx={{ mt: 2 }}>

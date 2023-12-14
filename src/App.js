@@ -7,7 +7,7 @@ import ProductManagement from './pages/ProductManagement';
 import Dashboard from './pages/Dashboard';
 // import axios from 'axios';
 
-export const Backend_URL = 'https://madmonkeyz-ecom.onrender.com'
+export const Backend_URL = 'http://localhost:8080'
 // export const token = sessionStorage.getItem('token');
 // export const instance = axios.create({
 //   baseURL: 'http://localhost:8080', // Replace with your server's address
