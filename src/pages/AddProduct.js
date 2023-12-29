@@ -8,6 +8,7 @@ import { Backend_URL } from "../App";
 import { useNavigate } from "react-router-dom";
 import { IconButton, Input, Typography } from "@material-tailwind/react";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const form = useRef();
@@ -27,7 +28,9 @@ const AddProduct = () => {
   const [fabric, setFabric] = useState("");
   const [style, setStyle] = useState("");
   const [notes, setNotes] = useState("");
-  const [varients, setVarients] = useState([{ size: "", stock : 0 }])
+  const [yLink, setYLink] = useState("");
+  const [care, setCare] = useState("");
+  const [varients, setVarients] = useState([{ size: "", stock : null }])
 
   const handleDragEnter = (e) => {
     e.preventDefault();
@@ -74,6 +77,8 @@ const AddProduct = () => {
       formData.append("fabric", fabric);
       formData.append("style", style);
       formData.append("notes", notes);
+      formData.append("yLink", yLink);
+      formData.append("care", care);
 
       formData.append('varients', JSON.stringify(varients));
       console.log(varients)
@@ -82,8 +87,6 @@ const AddProduct = () => {
       for (let i = 0; i < images.length; i++) {
         formData.append("images", images[i]);
       }
-
-      // console.log(formData)
 
       const response = await axios.post(
         `${Backend_URL}/admin/product/add`,
@@ -94,12 +97,14 @@ const AddProduct = () => {
       );
 
       if (response.status === 200) {
-        console.log("Product added successfully");
         navigate("/product-management");
+        toast.success(response.data.message);
+      } else {
+        toast.warning(response.data.message);
       }
     } catch (error) {
-      //   // setMessage('Error adding product');
-      //   console.log(error);
+      console.log(error);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -323,8 +328,12 @@ let removeFormFields = (i) => {
                         >
                           <option>Select tag</option>
                           <option>Best Selling</option>
+                          <option>Discount</option>
+                          <option>Fast Selling</option>
                           <option>Featured</option>
+                          <option>New</option>
                           <option>Offer</option>
+                          <option>Popular</option>
                         </select>
                       </div>
                     </div>
@@ -347,9 +356,16 @@ let removeFormFields = (i) => {
                           >
                             <option>Select</option>
                             <option>Black</option>
-                            <option>White</option>
                             <option>Blue</option>
+                            <option>Brown</option>
+                            <option>Gray</option>
+                            <option>Green</option>
+                            <option>Orange</option>
+                            <option>Pink</option>
+                            <option>Purple</option>
                             <option>Red</option>
+                            <option>White</option>
+                            <option>Yellow</option>
                           </select>
                         </div>
                       </div>
@@ -397,6 +413,32 @@ let removeFormFields = (i) => {
                             placeholder="Style"
                             value={style}
                             onChange={(e) => setStyle(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Machine care */}
+                  <div className="col-span-8 grid grid-cols-12 gap-4 mt-3">
+                  <div className="col-span-6">
+                      <label
+                        htmlFor="style"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
+                        Fabric Care
+                      </label>
+                      <div className="mt-1">
+                        <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                          <input
+                            type="text"
+                            name="care"
+                            id="care"
+                            autoComplete="care"
+                            className="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                            placeholder="Care"
+                            value={style}
+                            onChange={(e) => setCare(e.target.value)}
                           />
                         </div>
                       </div>
@@ -593,6 +635,30 @@ let removeFormFields = (i) => {
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}
                       />
+                    </div>
+                  </div>
+
+                  <div className="col-span-full mt-3">
+                    <label
+                      htmlFor="yLink"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Youtube Link
+                    </label>
+                    <div className="mt-1">
+                      <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                        <input
+                          required
+                          type="text"
+                          name="yLink"
+                          id="yLink"
+                          autoComplete="yLink"
+                          className="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                          placeholder="place link here"
+                          value={yLink}
+                          onChange={(e) => setYLink(e.target.value)}
+                        />
+                      </div>
                     </div>
                   </div>
                 </Grid>
